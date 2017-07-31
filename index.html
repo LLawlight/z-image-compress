@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="file" id="file" />
+  <img src="" id="image" />
+
+  <script src="./lib/zImageCompress.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  var file = null;
+  var reader = new FileReader();
+  document.querySelector('#file').addEventListener('change', function(event) {
+    file = event.target.files[0];
+    if (file) {
+      zImageCompress({
+        file: file,
+        maxHeight: 400
+      }, function(result) {
+        document.querySelector('body').append(result.canvas)
+      })
+    }
+  })
+  </script>
+</body>
+</html>
